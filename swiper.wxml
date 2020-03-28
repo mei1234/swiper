@@ -1,0 +1,26 @@
+<!--components/swiper/swiper.wxml-->
+    <view class="relative" style="height:{{height||305}}rpx">
+        <swiper
+          indicator-dots="{{swiper.indicatorDots}}"
+          autoplay="true"
+          circular="true"
+          interval="{{swiper.interval}}"
+          duration="{{swiper.duration}}"
+          current="{{swiper.current}}"
+          bindchange="swiperChangeTab"
+          bindanimationfinish="swiperChange"
+          >
+            <block wx:for="{{banners}}" wx:key="index">
+                <swiper-item>
+                    <!-- <navigator url="">  -->
+                        <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" class="slide-image"  />
+                    <!-- </navigator> -->
+                </swiper-item>
+            </block>
+        </swiper>
+        <view wx:if="{{show!=false}}" class="dots">
+            <block wx:for="{{banners}}" wx:key="index">
+                <view class="dot{{index == swiper.currentTab ? ' active' : ''}}" />
+            </block>
+        </view>
+    </view>
